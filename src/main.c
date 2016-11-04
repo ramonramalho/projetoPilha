@@ -3,6 +3,9 @@
 #include "pilha.h"
 #include "interface.h"
 
+void inverterString(char **string){
+	
+}
 
 int main(){
 	printCabecalho();
@@ -11,27 +14,42 @@ int main(){
 	do{
 		printMenu();
 		scanf("%d", &escolha);
-		if(escolha==1){
+		switch(escolha){
+			case 1:
 				int info=0;
 				printf("Digite o valor a ser acrescentado: \n");
 				scanf("%d", &info);
 				Inserir_topo(&p, info);
-		}else if(escolha==2){
+				break;
+			case 2:
 				Remover_topo(&p);
-		}else if(escolha==5){
-			int ver;
-			Verifica_vazio(p, &ver);
-			if(ver==0){
-				printf("Pilha não está vazia!\n");
-			}else{
-				printf("Pilha está vazia\n");	
-			}
-		}else if(escolha==4){
-			int tamanho = tamanhoPilha(p);
-			printf("Tamanho: %d\n", tamanho);
-		}else if(escolha==3){
-			inverter(&p);
+				break;
+			case 3:
+				inverter(&p);
+				break;
+			case 4:
+				int tamanho = tamanhoPilha(p);
+				printf("Tamanho: %d\n", tamanho);
+				break;
+			case 5
+				int ver;
+				Verifica_vazio(p, &ver);
+				if(ver==0){
+					printf("Pilha não está vazia!\n");
+				}else{
+					printf("Pilha está vazia\n");	
+				}
+				break;
+			case 6:
+				char string[300] = {0};
+				fgets(300, string, stdin);
+				int i=0; for(; i<300; i++) if(string[i]=='\n'){ string[i]='\0'; break; } //tirar \n
+				inverterString(string);
+				printf("%s\n", string);
+				break;
 		}
-	}while(escolha!=6);
-return 0;
+	} while(escolha != 7);
+	
+	Inicializa2_pilha(&p);
+	return 0;
 }
