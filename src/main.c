@@ -1,23 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "pilha.h"
+#include "interface.h"
 
-void menu(){
-	printf("\n");
-	printf("1-inserir topo\n");
-	printf("2-remover topo\n");
-	printf("3-inverter pilha\n");
-	printf("4-tamanho da pilha\n");
-	printf("5-verifica se a pilha está vazia\n");
-	printf("6-sair\n");
-	
-}
 
 int main(){
+	printCabecalho();
 	pilha *p;
 	int escolha=0;
 	do{
-		menu();
+		printMenu();
 		scanf("%d", &escolha);
 		if(escolha==1){
 				int info=0;
