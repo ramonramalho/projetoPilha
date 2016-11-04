@@ -7,13 +7,15 @@ void printMenu(){
 	char *s = "           ";
 	printf("\n%s ________________________________________\n", s);
 	printf("%s|                                        |\n", s);
-	printf("%s|      Analise de amostras de leite      |\n", s);
+	printf("%s|            Sistema de pilha            |\n", s);
 	printf("%s|                                        |\n", s);
-	printf("%s|  1 - Imprimir Amostras                 |\n", s);
-	printf("%s|  2 - Imprimir desvio padrao e medias   |\n", s);
-	printf("%s|  3 - Carregar outros arquivos          |\n", s);
-	printf("%s|  4 - Salvar graficos para analise      |\n", s);
-	printf("%s|  5 - Sair                              |\n", s);
+	printf("%s|  1 - Inserir topo                      |\n", s);
+	printf("%s|  2 - Remover topo                      |\n", s);
+	printf("%s|  3 - Inverter pilha                    |\n", s);
+	printf("%s|  4 - Tamanho da pilha                  |\n", s);
+	printf("%s|  5 - Verificar se a pilha esta vazia   |\n", s);
+	printf("%s|  6 - Inverter string                   |\n", s);
+	printf("%s|  7 - Sair                              |\n", s);
 	printf("%s|________________________________________|\n", s);
 	printf("%s Escolha uma opcao: ", s);
 }
