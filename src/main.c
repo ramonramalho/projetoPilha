@@ -4,7 +4,17 @@
 #include "interface.h"
 
 void inverterString(char **string){
-	
+	pilha *p;
+	Inicializar_pilha(&p);
+	int i=0, j=0;
+	while((*string)[i] != '\0'){
+		Inserir_topo(p, (int)(*string)[i]));
+		i++;
+	}
+	for(; j<i; j++){
+		(*string)[j] = (char)(*string)[i];
+	}
+	(*string)[j] = '\0';
 }
 
 int main(){
