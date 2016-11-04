@@ -8,7 +8,7 @@ void inverterString(char **string){
 	Inicializar_pilha(&p);
 	int i=0, j=0;
 	while((*string)[i] != '\0'){
-		Inserir_topo(p, (int)(*string)[i]));
+		Inserir_topo(p, (int)(*string)[i]);
 		i++;
 	}
 	for(; j<i; j++){
