@@ -20,9 +20,7 @@ int main(){
 				processoInserirTopo(p);
 				break;
 			case '2':
-				if(Remover_topo(&p) == ERRO){
-					printf("\n       | Pilha vazia, remocao impossivel\n");
-				}
+				processoRemoverTopo(p);
 				break;
 			case '3':
 				inverter(&p);

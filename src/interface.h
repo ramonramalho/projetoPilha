@@ -94,6 +94,23 @@ void processoInserirTopo(Pilha *p){
 	free(string);
 }
 
+void processoRemoverTopo(Pilha *p){
+	int dado;
+	if(Obter_topo(p, &dado) == ERRO){
+		printf("\n    | Pilha vazia, remocao impossivel\n");
+		return;
+	}
+	Remover_topo(&p);
+	
+	printf("\n______________________________________________________________\n");
+	printf("                                                              |\n");
+	printf("       Dado removido da pilha:                                |\n");
+	printf("     %d \n", dado);
+	printf("______________________________________________________________|\n");
+}
+
+
+
 
 
 
