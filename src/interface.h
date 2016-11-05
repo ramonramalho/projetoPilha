@@ -34,5 +34,49 @@ void printCabecalho(){
 }
 
 
+void processoInverterString(){
+	
+	char* string = (char*) malloc(sizeof(char) * 300);
+	
+	puts("\n______________________________________________________________");
+	puts("                                                              |");
+	printf("       Digite um texto a ser invertido:                       |\n");
+	printf("   > ");
+	fgets(string, 300, stdin);
+	printf("                                                              |\n");
+	
+	int i=0; for(; i<300; i++) if(string[i]=='\n'){ string[i]='\0'; break; } //tirar \n
+	inverterString((char**)&string);
+	printf("       Texto invertido:                                       |\n");
+	printf("     %s", string);
+	printf("\n______________________________________________________________|\n");
+	
+	free(string);
+}
+
+
+void processoInserirTopo(pilha *p){
+	
+	char* string = (char*) malloc(sizeof(char) * 300);
+	
+	puts("\n______________________________________________________________");
+	puts("                                                              |");
+	printf("       Digite o valor a ser inserido:                         |\n");
+	printf("   > ");
+	fgets(string, 300, stdin);
+	printf("                                                              |\n");
+	
+	int info=0;
+	sscanf(string, "%d", &info);
+	Inserir_topo(&p, info);
+	
+	printf("       Dado inserido:                                         |\n");
+	printf("   > %d", info);
+	printf("\n______________________________________________________________|\n");
+	
+	free(string);
+}
+
+
 
 

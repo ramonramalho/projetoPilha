@@ -23,18 +23,14 @@ void inverterString(char **string){
 int main(){
 	printCabecalho();
 	pilha *p;
+	Inicializar_pilha(&p);
 	char escolha[100];
 	do{
 		printMenu();
 		fgets(escolha, 100, stdin);
 		switch(escolha[0]){
 			case '1':
-				{
-					int info=0;
-					printf("Digite o valor a ser acrescentado: \n");
-					scanf("%d", &info);
-					Inserir_topo(&p, info);
-				}
+				processoInserirTopo(p);
 				break;
 			case '2':
 				Remover_topo(&p);
@@ -60,15 +56,8 @@ int main(){
 				}
 				break;
 			case '6':
-				{
-					char* string = (char*) malloc(sizeof(char) * 300);
-					fgets(string, 300, stdin);
-					
-					int i=0; for(; i<300; i++) if(string[i]=='\n'){ string[i]='\0'; break; } //tirar \n
-					inverterString((char**)&string);
-					printf("%s\n", string);
-					free(string);
-				} 
+				processoInverterString();
+				
 				break;
 		}
 	} while(escolha[0] != '7');
