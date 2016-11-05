@@ -1,21 +1,21 @@
 #include "pilha.h"
 
-typedef struct no_pilha {
+typedef struct t_Pilha {
 	int dado;
-	struct no_pilha *prox;
-}pilha;
+	struct t_Pilha *prox;
+} Pilha;
 
 
 //inicializa
-int Inicializar_pilha (pilha **inicio)
+int Inicializar_pilha (Pilha **inicio)
 {
 	*inicio= NULL;
 	return 0; /* sem erro */
 }
 
-int Inicializar2_pilha(pilha **inicio)
+int Inicializar2_pilha(Pilha **inicio)
 {
-	pilha *percorre, *aux;
+	Pilha *percorre, *aux;
 	if(*inicio != NULL)
 	{
 	   percorre = *inicio;
@@ -32,8 +32,8 @@ int Inicializar2_pilha(pilha **inicio)
 
 
 //tamanho pilha
-int tamanhoPilha(pilha * p){
-	pilha * s = p;
+int tamanhoPilha(Pilha * p){
+	Pilha * s = p;
 	if(s == NULL ){
 		return 0;
 	}
@@ -47,11 +47,11 @@ int tamanhoPilha(pilha * p){
 }
 
 //inverter pilha
-void inverter (pilha **p)
+void inverter (Pilha **p)
 {
-	pilha * p1 = *p;
-	pilha * p2;
-	pilha * aux = *p;
+	Pilha * p1 = *p;
+	Pilha * p2;
+	Pilha * aux = *p;
 	Inicializar_pilha(&p2);
 	while(aux != NULL){
 		int d;
@@ -64,12 +64,12 @@ void inverter (pilha **p)
 }
 
 //inserir
-int Inserir_topo (pilha **inicio, int info)
+int Inserir_topo (Pilha **inicio, int info)
 {
-	pilha *no_novo;
+	Pilha *no_novo;
 
 	/* Criacao do novo no - Alocação de memoria */
-	no_novo = (pilha *) malloc(sizeof(pilha));
+	no_novo = (Pilha *) malloc(sizeof(Pilha));
 	no_novo -> dado = info;
 
 	if (*inicio==NULL)
@@ -86,9 +86,9 @@ int Inserir_topo (pilha **inicio, int info)
 
 
 //remover
-int Remover_topo (pilha **inicio)
+int Remover_topo (Pilha **inicio)
 {
-	pilha *aux;
+	Pilha *aux;
 	if (*inicio == NULL)
 	{
 		 printf("\nPilha VAZIA ! \nRemocao Impossivel\n");
@@ -104,7 +104,7 @@ int Remover_topo (pilha **inicio)
 
 
 //obter o topo
-int Obter_topo(pilha *inicio, int *dado)
+int Obter_topo(Pilha *inicio, int *dado)
 {
 	if (inicio != NULL)
 	{
@@ -117,7 +117,7 @@ int Obter_topo(pilha *inicio, int *dado)
 
 
 //verifica vazio
-int Verifica_vazio (pilha *inicio, int *resp)
+int Verifica_vazio (Pilha *inicio, int *resp)
 {
 	if (inicio != NULL)
 	   *resp = 0; // Pilha nao Vazia

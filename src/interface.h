@@ -1,6 +1,6 @@
 
 
-//User Interface (impressão e leitura)
+// Interface com o usuário (entrada e saída)
 
 
 void printMenu(){
@@ -28,11 +28,28 @@ void printCabecalho(){
 	printf("\n          Algoritmos e Programacao de Computadores II");
 	printf("\n______________________________________________________________\n");
 	printf("                                                              |\n");
+	printf("                 Marcos Ramon Ramalho................183414   |\n");
 	printf("                 Sergio Ferreira Batista Filho.......187064   |\n");
-	printf("                  Marcos Ramon Ramalho...............183414   |\n");
 	printf("______________________________________________________________|\n");
 }
 
+
+void inverterString(char **string){
+	Pilha *p;
+	Inicializar_pilha(&p);
+	int i=0, j=0;
+	while( (*string)[i] != '\0'){
+		Inserir_topo(&p, (int)(*string)[i]);
+		i++;
+	}
+	for(; j<i; j++){
+		int n;
+		Obter_topo(p, &n);
+		Remover_topo(&p);
+		(*string)[j] = (char) n;
+	}
+	(*string)[j] = '\0';
+}
 
 void processoInverterString(){
 	
@@ -55,7 +72,7 @@ void processoInverterString(){
 }
 
 
-void processoInserirTopo(pilha *p){
+void processoInserirTopo(Pilha *p){
 	
 	char* string = (char*) malloc(sizeof(char) * 300);
 	

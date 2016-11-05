@@ -3,26 +3,11 @@
 #include "pilha.h"
 #include "interface.h"
 
-void inverterString(char **string){
-	pilha *p;
-	Inicializar_pilha(&p);
-	int i=0, j=0;
-	while( (*string)[i] != '\0'){
-		Inserir_topo(&p, (int)(*string)[i]);
-		i++;
-	}
-	for(; j<i; j++){
-		int n;
-		Obter_topo(p, &n);
-		Remover_topo(&p);
-		(*string)[j] = (char) n;
-	}
-	(*string)[j] = '\0';
-}
+
 
 int main(){
 	printCabecalho();
-	pilha *p;
+	Pilha *p;
 	Inicializar_pilha(&p);
 	char escolha[100];
 	do{
@@ -39,10 +24,7 @@ int main(){
 				inverter(&p);
 				break;
 			case '4':
-				{
-					int tamanho = tamanhoPilha(p);
-					printf("Tamanho: %d\n", tamanho);
-				}
+				printf("Tamanho: %d\n", tamanhoPilha(p));
 				break;
 			case '5':
 				{
@@ -57,11 +39,10 @@ int main(){
 				break;
 			case '6':
 				processoInverterString();
-				
 				break;
 		}
 	} while(escolha[0] != '7');
 	
-	Inicializar2_pilha(&p);
+	Inicializar2_pilha(&p); //limpar pilha da memoria
 	return 0;
 }
