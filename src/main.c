@@ -13,8 +13,9 @@ void inverterString(char **string){
 	}
 	for(; j<i; j++){
 		int n;
-		(*string)[j] = Obter_topo(p, &n);
+		Obter_topo(p, &n);
 		Remover_topo(&p);
+		(*string)[j] = (char) n;
 	}
 	(*string)[j] = '\0';
 }
