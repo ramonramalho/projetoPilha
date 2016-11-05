@@ -14,20 +14,19 @@ int Inicializar_pilha (Pilha **inicio)
 }
 
 // inicializa apagando tudo da pilha
-int Inicializar2_pilha(Pilha **inicio)
-{
+int Inicializar2_pilha(Pilha **inicio){
 	Pilha *percorre, *aux;
-	if(*inicio != NULL)
-	{
-	   percorre = *inicio;
-	   while (percorre != NULL)
-	   {
+	
+	if(*inicio != NULL){
+		percorre = *inicio;
+		while (percorre != NULL){
 			 aux = percorre;
 			 percorre = percorre -> prox;
 			 free(aux);
-	   }
-	   *inicio = NULL;
+		}
+		*inicio = NULL;
 	}
+	
 	return OK;
 }
 
@@ -67,20 +66,11 @@ void inverter (Pilha **p)
 //inserir
 int Inserir_topo (Pilha **inicio, int info)
 {
-	Pilha *no_novo;
-
-	no_novo = (Pilha *) malloc(sizeof(Pilha));
+	Pilha *no_novo = (Pilha *) malloc(sizeof(Pilha));
 	no_novo -> dado = info;
-
-	if (*inicio==NULL)
-	{	// insercao em pilha vazia
-		no_novo -> prox = NULL;
-		*inicio = no_novo;
-	}
-	else { // insercao em pilha nao vazia
-		 no_novo -> prox = *inicio;
-		*inicio = no_novo;
-	}
+	no_novo -> prox = *inicio;
+	*inicio = no_novo;
+	
 	return 0;
 }	
 
@@ -104,13 +94,10 @@ int Remover_topo (Pilha **inicio)
 //obter o topo
 int Obter_topo(Pilha *inicio, int *dado)
 {
-	if (inicio != NULL)
-	{
-	   *dado = inicio -> dado;
-	   return OK;
-	}
-	else
-	   return ERRO; // Pilha Vazia
+	if(inicio == NULL) return ERRO; // Pilha Vazia
+	
+	*dado = inicio -> dado;
+	return OK;
 }
 
 

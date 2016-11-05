@@ -26,16 +26,16 @@ int main(){
 				inverter(&p);
 				break;
 			case '4':
-				printf("Tamanho: %d\n", tamanhoPilha(p));
+				printf("\n    | Tamanho: %d\n", tamanhoPilha(p));
 				break;
 			case '5':
 				{
 					int ver;
 					Verifica_vazio(p, &ver);
 					if(ver==0){
-						printf("Pilha não está vazia!\n");
+						printf("\n    | A pilha não esta vazia\n");
 					}else{
-						printf("Pilha está vazia\n");
+						printf("\n    | A pilha esta vazia\n");
 					}
 				}
 				break;
@@ -46,5 +46,8 @@ int main(){
 	} while(escolha[0] != '7');
 	
 	Inicializar2_pilha(&p); //limpar pilha da memoria
+	printf("\n");
 	return 0;
 }
+
+
