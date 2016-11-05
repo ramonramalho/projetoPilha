@@ -7,12 +7,13 @@ struct t_Pilha;
 typedef struct t_Pilha Pilha;
 
 int Inicializar_pilha	 (Pilha **inicio);
-int Inicializar2_pilha	 (Pilha **inicio);
-int Inserir_topo		 (Pilha **inicio, int info);
-int Remover_topo		 (Pilha **inicio);
-int Obter_topo			 (Pilha *inicio, int *dado);
-int Verifica_vazio		 (Pilha *inicio, int *resp);
+int Resetar_pilha		 (Pilha **inicio);
 
-void inverter (Pilha **p);
-int tamanhoPilha(Pilha * p);
+int Push_pilha			 (Pilha **inicio, int info);
+int Pop_pilha			 (Pilha **inicio, int *dado);
+int IsEmpty_pilha		 (Pilha *inicio, int *resp);
+
+void Inverter_pilha (Pilha **p);
+int Tamanho_pilha(Pilha **p);
+int Obter_topo(Pilha *inicio, int *dado);
 

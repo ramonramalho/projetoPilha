@@ -40,13 +40,12 @@ void inverterString(char **string){
 	Inicializar_pilha(&p);
 	int i=0, j=0;
 	while( (*string)[i] != '\0'){
-		Inserir_topo(&p, (int)(*string)[i]);
+		Push_pilha(&p, (int)(*string)[i]);
 		i++;
 	}
 	for(; j<i; j++){
 		int n;
-		Obter_topo(p, &n);
-		Remover_topo(&p);
+		Pop_pilha(&p, &n);
 		(*string)[j] = (char) n;
 	}
 	(*string)[j] = '\0';
@@ -62,8 +61,8 @@ void processoInverterString(){
 	printf("   > ");
 	fgets(string, 300, stdin);
 	printf("                                                              |\n");
-	
-	int i=0; for(; i<300; i++) if(string[i]=='\n'){ string[i]='\0'; break; } //tirar \n
+	//tirar \n
+	int i=0; for(; i<300; i++) if(string[i]=='\n'){ string[i]='\0'; break; }
 	inverterString((char**)&string);
 	printf("       Texto invertido:                                       |\n");
 	printf("     %s", string);
@@ -74,7 +73,6 @@ void processoInverterString(){
 
 
 void processoInserirTopo(Pilha **p){
-	
 	char* string = (char*) malloc(sizeof(char) * 300);
 	
 	puts("\n______________________________________________________________");
@@ -86,7 +84,7 @@ void processoInserirTopo(Pilha **p){
 	
 	int info=0;
 	sscanf(string, "%d", &info);
-	Inserir_topo(p, info);
+	Push_pilha(p, info);
 	
 	printf("       Dado inserido:                                         |\n");
 	printf("     %d", info);
@@ -97,11 +95,10 @@ void processoInserirTopo(Pilha **p){
 
 void processoRemoverTopo(Pilha **p){
 	int dado;
-	if(Obter_topo(*p, &dado) == ERRO){
+	if(Pop_pilha(p, &dado) == ERRO){
 		printf("\n    | Pilha vazia, remocao impossivel\n");
 		return;
 	}
-	Remover_topo(p);
 	
 	printf("\n______________________________________________________________\n");
 	printf("                                                              |\n");
@@ -112,7 +109,7 @@ void processoRemoverTopo(Pilha **p){
 
 void processoImprimirPilha(Pilha **p){
 	int vazio;
-	Verifica_vazio(*p, &vazio);
+	IsEmpty_pilha(*p, &vazio);
 	if(vazio){
 		printf("\n    | Pilha vazia\n");
 		return;
@@ -126,15 +123,14 @@ void processoImprimirPilha(Pilha **p){
 	printf("                   Exibindo dados da pilha:\n\n");
 	
 	int dado;
-	while(Obter_topo(*p, &dado) != ERRO){
-		Remover_topo(p);
-		Inserir_topo(&p2, dado);
+	while(Pop_pilha(p, &dado) != ERRO){
+		Push_pilha(&p2, dado);
 		printf("                              %d\n", dado);
 	}
 	
 	printf("______________________________________________________________|\n");
 	
-	inverter(&p2);
+	Inverter_pilha(&p2);
 	*p = p2;
 }
 

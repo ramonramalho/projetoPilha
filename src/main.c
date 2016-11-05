@@ -23,16 +23,16 @@ int main(){
 				processoRemoverTopo(&p);
 				break;
 			case '3':
-				inverter(&p);
+				Inverter_pilha(&p);
 				printf("\n    | Pilha invertida\n");
 				break;
 			case '4':
-				printf("\n    | Tamanho: %d\n", tamanhoPilha(p));
+				printf("\n    | Tamanho: %d\n", Tamanho_pilha(&p));
 				break;
 			case '5':
 				{
 					int ver;
-					Verifica_vazio(p, &ver);
+					IsEmpty_pilha(p, &ver);
 					if(ver==0){
 						printf("\n    | A pilha não esta vazia\n");
 					}else{
@@ -49,7 +49,7 @@ int main(){
 		}
 	} while(escolha[0] != '8');
 	
-	Inicializar2_pilha(&p); //limpar pilha da memoria
+	Resetar_pilha(&p); //limpar pilha da memoria
 	printf("\n");
 	return 0;
 }

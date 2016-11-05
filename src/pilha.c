@@ -7,14 +7,13 @@ typedef struct t_Pilha {
 
 
 //inicializa
-int Inicializar_pilha (Pilha **inicio)
-{
+int Inicializar_pilha (Pilha **inicio){
 	*inicio= NULL;
-	return OK; /* sem erro */
+	return OK;
 }
 
 // inicializa apagando tudo da pilha
-int Inicializar2_pilha(Pilha **inicio){
+int Resetar_pilha(Pilha **inicio){
 	Pilha *percorre, *aux;
 	
 	if(*inicio != NULL){
@@ -26,57 +25,21 @@ int Inicializar2_pilha(Pilha **inicio){
 		}
 		*inicio = NULL;
 	}
-	
 	return OK;
 }
 
-
-//tamanho pilha
-int tamanhoPilha(Pilha * p){
-	Pilha * s = p;
-	if(s == NULL ) return 0;
-	
-	int tamanho=1;
-	while(s->prox != NULL){
-		s = s->prox;
-		tamanho++;
-	}
-	
-	return tamanho;
-}
-
-//inverter pilha
-void inverter (Pilha **p)
-{
-	Pilha * p1 = *p;
-	Pilha * p2;
-	Pilha * aux = *p;
-	Inicializar_pilha(&p2);
-	while(aux != NULL){
-		int d;
-		Obter_topo(aux, &d);
-		Inserir_topo(&p2, d);
-		aux = aux->prox;
-	}
-	*p = p2;
-	Inicializar2_pilha(&p1);
-}
-
 //inserir
-int Inserir_topo (Pilha **inicio, int info)
-{
+int Push_pilha(Pilha **inicio, int info){
 	Pilha *no_novo = (Pilha *) malloc(sizeof(Pilha));
 	no_novo -> dado = info;
 	no_novo -> prox = *inicio;
 	*inicio = no_novo;
 	
-	return 0;
+	return OK;
 }	
 
-
-//remover
-int Remover_topo (Pilha **inicio)
-{
+//remover e devolver dado
+int Pop_pilha(Pilha **inicio, int *dado){
 	Pilha *aux;
 	if (*inicio == NULL){
 		return ERRO;  /* pilha vazia, impossivel remover topo */
@@ -84,15 +47,50 @@ int Remover_topo (Pilha **inicio)
 	else {
 		aux = *inicio; 
 		*inicio = (*inicio)->prox;
+		*dado = aux->dado;
 		free(aux);
 		return OK;
 	}
 }
 
+//verifica vazio
+int IsEmpty_pilha(Pilha *inicio, int *resp){
+	if (inicio != NULL)
+	   *resp = 0; // Pilha nao Vazia
+	else
+	   *resp = 1; // Pilha Vazia
+	return OK;
+}
 
-//obter o topo
-int Obter_topo(Pilha *inicio, int *dado)
-{
+
+void Inverter_pilha(Pilha **p){
+	Pilha *p2;
+	int dado;
+	Inicializar_pilha(&p2);
+	
+	while(Pop_pilha(p, &dado) != ERRO){
+		Push_pilha(&p2, dado);
+	}
+	*p = p2;
+}
+
+int Tamanho_pilha(Pilha **p){
+	if(p == NULL ) return 0;
+	Pilha *p2;
+	Inicializar_pilha(&p2);
+	
+	int tamanho=1, dado;
+	while(Pop_pilha(p, &dado) != ERRO){
+		Push_pilha(&p2, dado);
+		tamanho++;
+	}
+	Inverter_pilha(&p2);
+	*p = p2;
+	return tamanho;
+}
+
+//obter o topo (apenas ler)
+int Obter_topo(Pilha *inicio, int *dado){
 	if(inicio == NULL) return ERRO; // Pilha Vazia
 	
 	*dado = inicio -> dado;
@@ -100,13 +98,4 @@ int Obter_topo(Pilha *inicio, int *dado)
 }
 
 
-//verifica vazio
-int Verifica_vazio (Pilha *inicio, int *resp)
-{
-	if (inicio != NULL)
-	   *resp = 0; // Pilha nao Vazia
-	else
-	   *resp = 1; // Pilha Vazia
-	return OK; 
-}
 
