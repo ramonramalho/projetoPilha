@@ -10,9 +10,10 @@ typedef struct t_Pilha {
 int Inicializar_pilha (Pilha **inicio)
 {
 	*inicio= NULL;
-	return 0; /* sem erro */
+	return OK; /* sem erro */
 }
 
+// inicializa apagando tudo da pilha
 int Inicializar2_pilha(Pilha **inicio)
 {
 	Pilha *percorre, *aux;
@@ -26,8 +27,8 @@ int Inicializar2_pilha(Pilha **inicio)
 			 free(aux);
 	   }
 	   *inicio = NULL;
-	   return 1; // inicializa apagando tudo da pilha
 	}
+	return OK;
 }
 
 
@@ -68,7 +69,6 @@ int Inserir_topo (Pilha **inicio, int info)
 {
 	Pilha *no_novo;
 
-	/* Criacao do novo no - Alocação de memoria */
 	no_novo = (Pilha *) malloc(sizeof(Pilha));
 	no_novo -> dado = info;
 
@@ -89,16 +89,14 @@ int Inserir_topo (Pilha **inicio, int info)
 int Remover_topo (Pilha **inicio)
 {
 	Pilha *aux;
-	if (*inicio == NULL)
-	{
-		 printf("\nPilha VAZIA ! \nRemocao Impossivel\n");
-		return 1;  /* pilha vazia, impossivel remover topo */
+	if (*inicio == NULL){
+		return ERRO;  /* pilha vazia, impossivel remover topo */
 	}
 	else {
 		aux = *inicio; 
 		*inicio = (*inicio)->prox;
 		free(aux);
-		return 0;
+		return OK;
 	}
 }
 
@@ -109,10 +107,10 @@ int Obter_topo(Pilha *inicio, int *dado)
 	if (inicio != NULL)
 	{
 	   *dado = inicio -> dado;
-	   return 0;
+	   return OK;
 	}
 	else
-	   return 1; // Pilha Vazia
+	   return ERRO; // Pilha Vazia
 }
 
 
@@ -123,6 +121,6 @@ int Verifica_vazio (Pilha *inicio, int *resp)
 	   *resp = 0; // Pilha nao Vazia
 	else
 	   *resp = 1; // Pilha Vazia
-	return 0; 
+	return OK; 
 }
 

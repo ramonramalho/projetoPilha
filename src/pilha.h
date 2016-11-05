@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define ERRO 1
+#define OK 0
+
 struct t_Pilha;
 typedef struct t_Pilha Pilha;
 
@@ -9,4 +12,7 @@ int Inserir_topo		 (Pilha **inicio, int info);
 int Remover_topo		 (Pilha **inicio);
 int Obter_topo			 (Pilha *inicio, int *dado);
 int Verifica_vazio		 (Pilha *inicio, int *resp);
+
+void inverter (Pilha **p);
+int tamanhoPilha(Pilha * p);
 

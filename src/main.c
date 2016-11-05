@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define ERRO 1
+#define OK 0
 #include "pilha.h"
 #include "interface.h"
 
@@ -18,7 +20,9 @@ int main(){
 				processoInserirTopo(p);
 				break;
 			case '2':
-				Remover_topo(&p);
+				if(Remover_topo(&p) == ERRO){
+					printf("\n       | Pilha vazia, remocao impossivel\n");
+				}
 				break;
 			case '3':
 				inverter(&p);

@@ -9,12 +9,12 @@ void printMenu(){
 	printf("%s|                                        |\n", s);
 	printf("%s|            Sistema de pilha            |\n", s);
 	printf("%s|                                        |\n", s);
-	printf("%s|  1 - Inserir topo                      |\n", s);
-	printf("%s|  2 - Remover topo                      |\n", s);
+	printf("%s|  1 - Inserir dado na pilha             |\n", s);
+	printf("%s|  2 - Remover dado do topo da pilha     |\n", s);
 	printf("%s|  3 - Inverter pilha                    |\n", s);
 	printf("%s|  4 - Tamanho da pilha                  |\n", s);
 	printf("%s|  5 - Verificar se a pilha esta vazia   |\n", s);
-	printf("%s|  6 - Inverter string                   |\n", s);
+	printf("%s|  6 - Inverter string usando pilha      |\n", s);
 	printf("%s|  7 - Sair                              |\n", s);
 	printf("%s|________________________________________|\n", s);
 	printf("%s Escolha uma opcao: ", s);
@@ -78,7 +78,7 @@ void processoInserirTopo(Pilha *p){
 	
 	puts("\n______________________________________________________________");
 	puts("                                                              |");
-	printf("       Digite o valor a ser inserido:                         |\n");
+	printf("       Digite o valor a ser inserido na pilha                 |\n");
 	printf("   > ");
 	fgets(string, 300, stdin);
 	printf("                                                              |\n");
@@ -88,7 +88,7 @@ void processoInserirTopo(Pilha *p){
 	Inserir_topo(&p, info);
 	
 	printf("       Dado inserido:                                         |\n");
-	printf("   > %d", info);
+	printf("     %d", info);
 	printf("\n______________________________________________________________|\n");
 	
 	free(string);
