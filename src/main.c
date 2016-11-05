@@ -17,13 +17,14 @@ int main(){
 		fgets(escolha, 100, stdin);
 		switch(escolha[0]){
 			case '1':
-				processoInserirTopo(p);
+				processoInserirTopo(&p);
 				break;
 			case '2':
-				processoRemoverTopo(p);
+				processoRemoverTopo(&p);
 				break;
 			case '3':
 				inverter(&p);
+				printf("\n    | Pilha invertida\n");
 				break;
 			case '4':
 				printf("\n    | Tamanho: %d\n", tamanhoPilha(p));
@@ -40,10 +41,13 @@ int main(){
 				}
 				break;
 			case '6':
+				processoImprimirPilha(&p);
+				break;
+			case '7':
 				processoInverterString();
 				break;
 		}
-	} while(escolha[0] != '7');
+	} while(escolha[0] != '8');
 	
 	Inicializar2_pilha(&p); //limpar pilha da memoria
 	printf("\n");

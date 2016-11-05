@@ -34,9 +34,8 @@ int Inicializar2_pilha(Pilha **inicio){
 //tamanho pilha
 int tamanhoPilha(Pilha * p){
 	Pilha * s = p;
-	if(s == NULL ){
-		return 0;
-	}
+	if(s == NULL ) return 0;
+	
 	int tamanho=1;
 	while(s->prox != NULL){
 		s = s->prox;
