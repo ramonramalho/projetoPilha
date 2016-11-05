@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-struct no_pilha;
-typedef struct no_pilha pilha;
+struct t_Pilha;
+typedef struct t_Pilha Pilha;
 
-int Inicializar_pilha	  (pilha **inicio);
-int Inicializar2_pilha	 (pilha **inicio);
-int Inserir_topo		   (pilha **inicio, int info);
-int Remover_topo		   (pilha **inicio);
-int Obter_topo			 (pilha *inicio, int *dado);
-int Verifica_vazio		 (pilha *inicio, int *resp);
+int Inicializar_pilha	 (Pilha **inicio);
+int Inicializar2_pilha	 (Pilha **inicio);
+int Inserir_topo		 (Pilha **inicio, int info);
+int Remover_topo		 (Pilha **inicio);
+int Obter_topo			 (Pilha *inicio, int *dado);
+int Verifica_vazio		 (Pilha *inicio, int *resp);
 
