@@ -1,5 +1,7 @@
 # Projeto Pilha
 
+**Instruções para compilar**
+
 > Para compilar em linux execute os comandos
 * `gcc -c main.c -o main`
 * `gcc -c pilha.c -o pilha`
