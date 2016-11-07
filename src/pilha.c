@@ -79,7 +79,7 @@ int Tamanho_pilha(Pilha **p){
 	Pilha *p2;
 	Inicializar_pilha(&p2);
 	
-	int tamanho=1, dado;
+	int tamanho=0, dado;
 	while(Pop_pilha(p, &dado) != ERRO){
 		Push_pilha(&p2, dado);
 		tamanho++;
